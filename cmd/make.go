@@ -66,7 +66,7 @@ func Tar(src string, writers ...io.Writer) error {
 
 	// ensure the src actually exists before trying to tar it
 	if _, err := os.Stat(src); err != nil {
-		return fmt.Errorf("unable to tar files - %v", err.Error())
+		return fmt.Errorf("path does not exist - %v", err.Error())
 	}
 
 	mw := io.MultiWriter(writers...)
