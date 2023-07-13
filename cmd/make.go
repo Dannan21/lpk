@@ -34,12 +34,14 @@ to quickly create a Cobra application.`,
 		} else {
 			fmt.Println("Making package...")
 			packagePath = args[0]
+			Tar(packagePath, os.Stdout)
 		}
 
 		cfg, err := ini.Load("config.ini")
 		if err != nil {
 			fmt.Printf("Fail to read file: %v", err)
 			os.Exit(1)
+
 		}
 
 		Tar(packagePath, os.Stdout)
@@ -48,7 +50,7 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
-	rootCmd.AddCommand(installCmd)
+	rootCmd.AddCommand(makeCmd)
 
 	// Here you will define your flags and configuration settings.
 
